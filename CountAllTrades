@@ -1,0 +1,12 @@
+//Following is a custom function which when called will return total of active trades for a particular magic number
+
+int CountAllTrades(int magic) {
+   int c=0;
+   for (int j=OrdersTotal()-1;j>=0;j--)
+   {
+      OrderSelect(j,SELECT_BY_POS,MODE_TRADES);
+      if (OrderSymbol()==Symbol() && OrderMagicNumber()==magic) c++;
+   }
+   
+   return(c);
+}
