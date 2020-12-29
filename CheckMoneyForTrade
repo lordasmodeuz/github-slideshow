@@ -1,0 +1,13 @@
+bool CheckMoneyForTrade(string symb, double lots,int type)
+{
+   double free_margin=AccountFreeMarginCheck(symb,type, lots);
+   //-- if there is not enough money
+   if(free_margin<0)
+   {
+      string oper=(type==0)? "Buy":"Sell";
+      Print("Not enough money for ", oper," ",lots, " ", symb, " Error code=",ErrorDescription(GetLastError()));
+      return(0);
+   }
+   //--- checking successful
+   return(1);
+}
